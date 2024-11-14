@@ -3,7 +3,7 @@ import React, { FormEvent, useState } from 'react';
 import { CartFormData } from '../../types/cart';
 
 interface CartFormProps {
-  onSubmit: (data: CartFormData) => Promise<boolean>; // Cambiado de void a boolean
+  onSubmit: (data: CartFormData) => Promise<boolean>;
   loading: boolean;
 }
 

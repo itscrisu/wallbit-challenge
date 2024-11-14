@@ -7,16 +7,19 @@ import {
 } from '@mui/material';
 import React from 'react';
 import { useCart } from '../hooks/useCart';
-import { CartFormData } from '../types/cart';
 import { CartForm } from './cart/CartForm';
 import { CartTable } from './cart/CartTable';
 
 const ProgrammerCart: React.FC = () => {
-  const { cartItems, error, loading, addToCart } = useCart();
-
-  const handleSubmit = async (data: CartFormData): Promise<boolean> => {
-    return await addToCart(data);
-  };
+  const { 
+    cartItems, 
+    error, 
+    loading, 
+    addToCart,
+    clearCart,
+    removeItem,
+    updateQuantity
+  } = useCart();
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
@@ -25,7 +28,7 @@ const ProgrammerCart: React.FC = () => {
           Tienda - El topo
         </Typography>
 
-        <CartForm onSubmit={handleSubmit} loading={loading} />
+        <CartForm onSubmit={addToCart} loading={loading} />
 
         {error && (
           <Alert severity="error" sx={{ mb: 2 }}>
@@ -36,13 +39,16 @@ const ProgrammerCart: React.FC = () => {
         <Paper variant="outlined" sx={{ mt: 2 }}>
           <Box sx={{ p: 2 }}>
             <Typography variant="h6">
-              {cartItems.length === 0 
-                ? 'Carrito de compra'
-                : `Carrito de compra - Iniciado ${new Date().toLocaleString()}`}
+              Carrito de compras
             </Typography>
           </Box>
 
-          <CartTable items={cartItems} />
+          <CartTable 
+            items={cartItems}
+            onRemoveItem={removeItem}
+            onUpdateQuantity={updateQuantity}
+            onClearCart={clearCart}
+          />
         </Paper>
       </Paper>
     </Container>
