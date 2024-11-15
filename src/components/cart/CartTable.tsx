@@ -1,4 +1,4 @@
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 import {
   Box,
   Button,
@@ -10,11 +10,11 @@ import {
   TableHead,
   TableRow,
   TextField,
-  Typography
-} from '@mui/material';
-import React from 'react';
-import { CartItem } from '../../types/cart';
-import { StyledImage } from '../common/StyledImage';
+  Typography,
+} from "@mui/material";
+import React from "react";
+import { CartItem } from "../../types/cart";
+import { StyledImage } from "../common/StyledImage";
 
 interface CartTableProps {
   items: CartItem[];
@@ -23,13 +23,9 @@ interface CartTableProps {
   onClearCart: () => void;
 }
 
-export const CartTable: React.FC<CartTableProps> = ({ 
-  items, 
-  onRemoveItem, 
-  onUpdateQuantity,
-  onClearCart 
-}) => {
+export const CartTable: React.FC<CartTableProps> = ({ items, onRemoveItem, onUpdateQuantity, onClearCart }) => {
   const total = items.reduce((sum, item) => sum + item.totalPrice, 0);
+  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
   if (items.length === 0) {
     return (
@@ -72,7 +68,7 @@ export const CartTable: React.FC<CartTableProps> = ({
                     slotProps={{
                       input: {
                         inputMode: "numeric",
-                      }
+                      },
                     }}
                     sx={{ width: 80 }}
                   />
@@ -81,16 +77,10 @@ export const CartTable: React.FC<CartTableProps> = ({
                 <TableCell>${item.price}</TableCell>
                 <TableCell>${item.totalPrice.toFixed(2)}</TableCell>
                 <TableCell>
-                  <StyledImage 
-                    src={item.image} 
-                    alt={item.title}
-                  />
+                  <StyledImage src={item.image} alt={item.title} />
                 </TableCell>
                 <TableCell>
-                  <IconButton 
-                    onClick={() => onRemoveItem(item.id)}
-                    color="error"
-                  >
+                  <IconButton onClick={() => onRemoveItem(item.id)} color="error">
                     <DeleteIcon />
                   </IconButton>
                 </TableCell>
@@ -100,23 +90,24 @@ export const CartTable: React.FC<CartTableProps> = ({
         </Table>
       </TableContainer>
 
-      <Box sx={{ 
-        mt: 2, 
-        p: 2, 
-        display: 'flex', 
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        borderTop: 1,
-        borderColor: 'divider'
-      }}>
-        <Typography variant="h6">
-          Total: ${total.toFixed(2)}
-        </Typography>
-        <Button 
-          variant="outlined" 
-          color="error"
-          onClick={onClearCart}
-        >
+      <Box
+        sx={{
+          mt: 2,
+          p: 2,
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          borderTop: 1,
+          borderColor: "divider",
+        }}
+      >
+        <Box>
+          <Typography variant="h6">Total: ${total.toFixed(2)}</Typography>
+          <Typography variant="body2" color="text.secondary">
+            Cantidad total de productos: {totalItems}
+          </Typography>
+        </Box>
+        <Button variant="outlined" color="error" onClick={onClearCart}>
           Limpiar Carrito
         </Button>
       </Box>

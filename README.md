@@ -41,16 +41,15 @@ npm run dev
 
 ## Pendientes (EXTRAS)
 
-- [ ] El carrito se persiste al recargar la página.
-- [ ] Mostrar el total de productos agregados.
-- [ ] Mostrar el costo total del carrito.
-- [ ] Mostrar la fecha de creación del carrito.
+- [X] El carrito se persiste al recargar la página.
+- [X] Mostrar el total de productos agregados.
+- [X] Mostrar el costo total del carrito.
+- [X] Mostrar la fecha de creación del carrito.
+ 
+## Otros extra
 
-## Doble pendientes? (RECONTRA EXTRAS)
-
-- [ ] Agregar total del carrito
-- [ ] Agregar funcionalidad para eliminar items
-- [ ] Agregar actualizacion de cantidades
+- [X] Agregar funcionalidad para eliminar items
+- [X] Agregar actualizacion de cantidades
 - [ ] Testing
 
 ## API
