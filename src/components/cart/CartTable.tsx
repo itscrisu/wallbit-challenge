@@ -53,7 +53,7 @@ export const CartTable: React.FC<CartTableProps> = ({ items, onRemoveItem, onUpd
           </TableHead>
           <TableBody>
             {items.map((item) => (
-              <TableRow key={item.id}>
+              <TableRow key={`${item.id}-${item.quantity}`}>
                 <TableCell>
                   <TextField
                     type="number"

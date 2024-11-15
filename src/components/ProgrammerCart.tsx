@@ -1,25 +1,11 @@
-import {
-  Alert,
-  Box,
-  Container,
-  Paper,
-  Typography
-} from '@mui/material';
-import React from 'react';
-import { useCart } from '../hooks/useCart';
-import { CartForm } from './cart/CartForm';
-import { CartTable } from './cart/CartTable';
+import { Alert, Box, Container, Paper, Typography } from "@mui/material";
+import React from "react";
+import { useCart } from "../hooks/useCart";
+import { CartForm } from "./cart/CartForm";
+import { CartTable } from "./cart/CartTable";
 
 const ProgrammerCart: React.FC = () => {
-  const { 
-    cartItems, 
-    error, 
-    loading, 
-    addToCart,
-    clearCart,
-    removeItem,
-    updateQuantity
-  } = useCart();
+  const { cartItems, error, loading, addToCart, clearCart, removeItem, updateQuantity, startedAt } = useCart();
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
@@ -39,11 +25,13 @@ const ProgrammerCart: React.FC = () => {
         <Paper variant="outlined" sx={{ mt: 2 }}>
           <Box sx={{ p: 2 }}>
             <Typography variant="h6">
-              Carrito de compras
+              {cartItems.length === 0
+                ? "Carrito de compra"
+                : `Carrito de compra - Iniciado ${startedAt}`}
             </Typography>
           </Box>
 
-          <CartTable 
+          <CartTable
             items={cartItems}
             onRemoveItem={removeItem}
             onUpdateQuantity={updateQuantity}

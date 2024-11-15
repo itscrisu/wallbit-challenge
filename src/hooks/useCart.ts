@@ -3,11 +3,17 @@ import { fetchProduct } from '../services/api';
 import { CartFormData, CartItem } from '../types/cart';
 
 const CART_STORAGE_KEY = 'cart-storage';
+const CART_STARTED_AT_KEY = 'started-at'
 
 export const useCart = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     const savedCart = localStorage.getItem(CART_STORAGE_KEY);
     return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  const [startedAt, setStartedAt] = useState<string>(() => {
+    const savedDate = localStorage.getItem(CART_STARTED_AT_KEY);
+    return savedDate || '';
   });
   
   const [error, setError] = useState<string>('');
@@ -16,6 +22,14 @@ export const useCart = () => {
   useEffect(() => {
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
   }, [cartItems]);
+
+  useEffect(() => {
+    if (cartItems.length > 0 && !startedAt) {
+      const newStartedAt = new Date().toLocaleString();
+      setStartedAt(newStartedAt);
+      localStorage.setItem(CART_STARTED_AT_KEY, newStartedAt);
+    }
+  }, [cartItems.length, startedAt]);
 
   const addToCart = async ({ productId, quantity }: CartFormData) => {
     setError('');
@@ -64,6 +78,8 @@ export const useCart = () => {
 
   const clearCart = () => {
     setCartItems([]);
+    setStartedAt('');
+    localStorage.removeItem(CART_STARTED_AT_KEY);
   };
 
   const removeItem = (productId: number) => {
@@ -87,6 +103,7 @@ export const useCart = () => {
     addToCart,
     clearCart,
     removeItem,
-    updateQuantity
+    updateQuantity,
+    startedAt
   };
 };
