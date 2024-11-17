@@ -28,8 +28,8 @@ Ingresá a ver la solución haciendo click [acá](wallbit-challenge-nu.vercel.ap
 
 1. Cloná el repositorio
 ```bash
-git clone https://github.com/itscrisu/wallbit-challenge-crisu.git
-cd wallbit-challenge-crisu
+git clone https://github.com/itscrisu/wallbit-challenge.git
+cd wallbit-challenge
 ```
 
 2. Instalá las dependencias
