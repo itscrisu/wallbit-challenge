@@ -5,6 +5,9 @@ Esta es una solucion al requisito del cliente:
 
 Cada vez que se agrega un producto, vamos a obtener el producto desde la API y lo vamos a mostrar en una tabla, junto a la cantidad que el usuario eligió."
 
+## Version LIVE
+Ingresá a ver la solución haciendo click [acá](wallbit-challenge-nu.vercel.app)
+
 ## Tecnologías
 
 - React 18
@@ -50,7 +53,8 @@ npm run dev
 
 - [X] Agregar funcionalidad para eliminar items
 - [X] Agregar actualizacion de cantidades
-- [ ] Testing
+- [X] Agregar dark/light theme
+- [X] Testing
 
 ## API
 
