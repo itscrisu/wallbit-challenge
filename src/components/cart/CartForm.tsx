@@ -40,7 +40,7 @@ export const CartForm: React.FC<CartFormProps> = ({ onSubmit, loading }) => {
         size="small"
         required
         inputProps={{ min: 1 }}
-        sx={{ width: 100 }}
+        sx={{ width: 150 }}
       />
       <TextField
         label="ID del Producto"
@@ -50,7 +50,7 @@ export const CartForm: React.FC<CartFormProps> = ({ onSubmit, loading }) => {
         size="small"
         required
         inputProps={{ min: 1 }}
-        sx={{ width: 150 }}
+        sx={{ width: 200 }}
       />
       <Button 
         variant="contained" 

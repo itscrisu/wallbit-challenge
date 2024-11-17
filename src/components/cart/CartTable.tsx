@@ -74,13 +74,13 @@ export const CartTable: React.FC<CartTableProps> = ({ items, onRemoveItem, onUpd
                   />
                 </TableCell>
                 <TableCell>{item.title}</TableCell>
-                <TableCell>${item.price}</TableCell>
-                <TableCell>${item.totalPrice.toFixed(2)}</TableCell>
+                <TableCell data-testid="price-u">${item.price}</TableCell>
+                <TableCell data-testid="price-t">${item.totalPrice.toFixed(2)}</TableCell>
                 <TableCell>
                   <StyledImage src={item.image} alt={item.title} />
                 </TableCell>
                 <TableCell>
-                  <IconButton onClick={() => onRemoveItem(item.id)} color="error">
+                  <IconButton onClick={() => onRemoveItem(item.id)} color="error" data-testid="delete-button">
                     <DeleteIcon />
                   </IconButton>
                 </TableCell>
